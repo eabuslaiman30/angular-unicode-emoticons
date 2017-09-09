@@ -1,0 +1,38 @@
+{
+  "name": "angular-unicode-emoticons",
+  "version": "1.0.0",
+  "homepage": "https://github.com/coviam/bower-angular-unicode-emoticons",
+  "authors": [
+    "Siddharth Pandey <siddharth.pandey@coviam.com>"
+  ],
+  "description": "Angular library for unicode emoticons",
+  "main": "angular-unicode-emoticons.js",
+  "keywords": [
+    "angular",
+    "emoticons",
+    "emoji",
+    "smiley"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-sanitize": "^1.6.5"
+  },
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "6f2457afa9b329c622aa7c115326843220e3bf51"
+  },
+  "_source": "https://github.com/coviam/bower-angular-unicode-emoticons.git",
+  "_target": "^1.0.0",
+  "_originalSource": "angular-unicode-emoticons",
+  "_direct": true
+}
