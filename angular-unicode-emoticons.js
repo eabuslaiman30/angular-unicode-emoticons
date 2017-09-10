@@ -3477,10 +3477,11 @@ angular.module('ngUnicodeEmoticons', ['ngSanitize'])
     return {
       scope: {
         'onSelect': '&?',
+        'onClose': '&?',
         'ngModel': '='
       },
       restrict: 'E',
-      template: '<div class="angular-emotions-container"> <div class="angular-emoticons-input-container" ng-click="$event.stopPropagation()"><input class="emoticon-input" type="text" name="search_smiley" ng-model="search" placeholder="Search Emoticons"></div> <div class="angular-emoticons-list"> <span class="angular-emoticon" ng-repeat="emoticon in emoticonList | filter: {text:search} track by $index" ng-bind-html="emoticon.value" title="{{emoticon.text}}" ng-mouseover="highlight(emoticon)" ng-click="selectEmoticon(emoticon)" ng-class="{\'active\' : data.emoticon.value === emoticon.value}"></span> </div> <div class="angular-emoticons-footer" ng-click="$event.stopPropagation()"> <span class="angular-big-emoticon" ng-bind-html="data.emoticon.value" title="{{data.emoticon.text}}"></span> <span class="angular-emoticon-text" ng-if="data.emoticon" ng-bind="\':\'+data.emoticon.text+\':\'"></span> </div></div>',
+      template: '<div class="angular-emotions-container"> <a class="close-popup text-center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; display: block; width: 100%; cursor: pointer; padding: 5px;" ng-click="close()">Close</a> <div class="angular-emoticons-input-container" ng-click="$event.stopPropagation()"><input class="emoticon-input" type="text" name="search_smiley" ng-model="search" placeholder="Search Emoticons"></div> <div class="angular-emoticons-list"> <span class="angular-emoticon" ng-repeat="emoticon in emoticonList | filter: {text:search} track by $index" ng-bind-html="emoticon.value" title="{{emoticon.text}}" ng-mouseover="highlight(emoticon)" ng-click="selectEmoticon(emoticon)" ng-class="{\'active\' : data.emoticon.value === emoticon.value}"></span> </div> <div class="angular-emoticons-footer" ng-click="$event.stopPropagation()"> <span class="angular-big-emoticon" ng-bind-html="data.emoticon.value" title="{{data.emoticon.text}}"></span> <span class="angular-emoticon-text" ng-if="data.emoticon" ng-bind="\':\'+data.emoticon.text+\':\'"></span> </div></div>',
       link: function($scope, iElm, iAttrs, controller) {
         $scope.data = {};
         $scope.emoticonList = emoticonList;
@@ -3488,6 +3489,14 @@ angular.module('ngUnicodeEmoticons', ['ngSanitize'])
         $scope.highlight = function(emoticon) {
           $scope.data.emoticon = emoticon;
         };
+
+        $scope.close = function() {
+            if($scope.onClose) {
+                $timeout(function(){
+                    $scope.onClose()
+                }, 0);
+            }
+        }
 
         $scope.selectEmoticon = function(emoticon) {
           $scope.ngModel = emoticon;
